@@ -29,11 +29,17 @@ dpkg -i go-hass-agent_10.3.2_amd64.deb
 
 Now you need some Xwindows server in order to export X11 sessions from Linux, I will say a very goos option is to install [Mobaxterm](https://mobaxterm.mobatek.net/). Just remember to activate X11 forwarding when configuring your ssh connection to the Linux machine.
 
-![Image](MobaXtermX11FWD.PNG)
+![Image](MobaXtermX11FWD.png)
 
 Time to start with the basic configuration, as a non root user:
 
 ```
 go-hass-agent run
 ```
+Open your HA webpage, go to your **profile** and then **security** tab (http://<ha_ip>:8123/profile/security) , click **create token**, insert a desired name, and copy the token.
 
+Fullfill the go-hass-agent pop-up, with the token and the http://<ha_ip>:8123
+
+You will see lots of information in the console, everything is working fine!
+
+Open your HA webpage, **setting**, **devices and services**, **Movile app**, here you have your Linux machine with all the sensors.
