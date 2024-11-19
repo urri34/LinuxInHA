@@ -22,7 +22,7 @@ Description=Glances
 After=network.target
 
 [Service]
-ExecStart=/usr/local/bin/glances -s
+ExecStart=/usr/local/bin/glances -w
 Restart=always
 RemainAfterExit=no
 
