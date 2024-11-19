@@ -21,6 +21,7 @@ Visit [go-hass official page](https://github.com/joshuar/go-hass-agent) , where 
 Find your package in [relases section](https://github.com/joshuar/go-hass-agent/releases) -> [At this moment was this](https://github.com/joshuar/go-hass-agent/releases/download/v10.3.2/go-hass-agent_10.3.2_amd64.deb)
 
 ```
+(as root)
 wget https://github.com/joshuar/go-hass-agent/releases/download/v10.3.2/go-hass-agent_10.3.2_amd64.deb
 dpkg -i go-hass-agent_10.3.2_amd64.deb
 apt-get install -f
@@ -34,6 +35,7 @@ Now you need some Xwindows server in order to export X11 sessions from Linux, I 
 Time to start with the basic configuration, as a non root user:
 
 ```
+(as non root user)
 go-hass-agent run
 ```
 Open your HA webpage, go to your **profile** and then **security** tab (http://<ha_ip>:8123/profile/security) , click **create token**, insert a desired name, and copy the token.
@@ -42,4 +44,17 @@ Fullfill the go-hass-agent pop-up, with the token and the http://<ha_ip>:8123
 
 You will see lots of information in the console, everything is working fine!
 
-Open your HA webpage, **setting**, **devices and services**, **Movile app**, here you have your Linux machine with all the sensors.
+Open your HA webpage, go to **setting**, then go to **devices and services** and select **Movile app**, here you have your Linux machine with all the sensors.
+
+Now lets make it a service in the linux machine:
+
+```
+(as root)
+loginctl list-users
+loginctl enable-linger
+loginctl list-users
+(as non root user)
+systemctl --user enable go-hass-agent
+systemctl --user start go-hass-agent
+systemctl --user status go-hass-agent
+```
