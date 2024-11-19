@@ -9,6 +9,10 @@ If you just want to monitor the Linux machine, deeply monitor but without taking
 ```
 apt-get install glances
 ```
+### Config:
+
+Open your HA webpage, go to **setting**, then go to **devices and services** and select **Glances**, click **ADD ENTRY** and just fullfill the hostname, username and password are not necessary.
+
 ## As a service:
 
 Create a new unit by creating a file called glances.service in the /etc/systemd/system/ folder.
