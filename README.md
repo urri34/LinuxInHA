@@ -9,7 +9,28 @@ If you just want to monitor the Linux machine, deeply monitor but without taking
 ```
 apt-get install glances
 ```
+## As a service:
 
+Create a new unit by creating a file called glances.service in the /etc/systemd/system/ folder.
+```
+[Unit]
+Description=Glances
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/glances -s
+Restart=always
+RemainAfterExit=no
+
+[Install]
+WantedBy=multi-user.target
+```
+And simply:
+```
+(as root)
+sudo systemctl enable glances.service
+sudo systemctl start glances.service
+```
 ## Go-hass-agent
 
 If you want to be able to execute scripts to that machine thru HA and you dont need a deeep monitor, this is your best option.
