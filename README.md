@@ -32,8 +32,8 @@ WantedBy=multi-user.target
 And simply:
 ```
 (as root)
-sudo systemctl enable glances.service
-sudo systemctl start glances.service
+systemctl enable glances.service
+systemctl start glances.service
 ```
 ## Go-hass-agent
 
